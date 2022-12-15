@@ -14,6 +14,7 @@ namespace Tools {
 
     vector<string> readFilesInDirectory(string directoryToRead);
 
+    bool correctTimeCheck(string time);
 }
 
 #endif

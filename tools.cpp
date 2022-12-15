@@ -9,7 +9,7 @@
 #include <experimental/filesystem>
 
 #include "headers/tools.h"
-#include "data.cpp"
+#include "headers/data.h"
 
 using namespace std;
 using namespace boost;
@@ -71,6 +71,36 @@ vector<string> Tools::readFilesInDirectory(string directoryToRead) {
     }
 
     return filesInDirectory;
+}
+
+
+bool Tools::correctTimeCheck(string time) {
+    vector<string> timeSeparated;
+    int hours;
+    int minutes;
+
+    split(timeSeparated, time, is_any_of(":"));
+    
+
+    if (timeSeparated.size() == 2) {
+        hours = stoi(timeSeparated[0]);
+        minutes = stoi(timeSeparated[1]);
+
+        try {
+            if (hours < 24 && hours > -1 && minutes < 60 && minutes > -1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch (std::exception ex){
+            return false;
+        }
+    }
+    else {
+        return false;
+    }
 }
 
 

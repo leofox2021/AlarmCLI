@@ -3,7 +3,7 @@
 
 #include "headers/tools.h"
 #include "headers/menu.h"
-#include "data.cpp"
+#include "headers/data.h"
 
 using namespace std;
 using namespace Tools;
@@ -15,42 +15,50 @@ void Menu::mainMenu(){
     cout << "1 - New alarm" << endl;
     cout << "2 - Existing alarms" << endl;
     cout << "3 - Manage ringtones" << endl;
+    cout << "4 - Exit" << endl;
 }
 
 
 void Menu::addNameMenu(){
-    cout << "Enter a name for your new alarm: \n\n" << endl;
+    cout << "Enter a name for your new alarm: " << endl;
+    cout << "Type quit to exit\n\n" << endl;
 }
 
 
 void Menu::addTimeMenu(){
-    cout << "Enter time for your alarm in this format: HH:MM\n\n" << endl;
+    cout << "Enter time for your alarm in this format: HH:MM" << endl;
+    cout << "Type quit to exit\n\n" << endl;
 }
 
 
 void Menu::addRingtoneMenu(){
-    vector<string> filesInDirectory = readFilesInDirectory("ringtones");
+    Data::ringtoneNames = readFilesInDirectory("ringtones");
     int counter = 1; 
 
     cout << "Choose a ringtone to play (by number): \n\n" << endl;
 
-    for (string & file : filesInDirectory) {
+    for (string & file : Data::ringtoneNames) {
         cout << counter << ". " << file << endl;
         counter += 1;
     }
+
+    cout << "\n\n" << endl;
 }
 
 
 void Menu::repeatedOnMenu(){
-    cout << "What days should your alarm be repeated at?\n\n" << endl;
+    cout << "What days should your alarm be repeated on?(1-8)\n\n" << endl;
 
-    cout << "1. Monday" << endl;
-    cout << "2. Tuesday" << endl;
-    cout << "3. Wednesday" << endl;
-    cout << "4. Thursday" << endl;
-    cout << "5. Friday" << endl;
-    cout << "6. Saturday" << endl;
-    cout << "7. Sunday" << endl;
+    cout << "mon - Monday" << endl;
+    cout << "tue - Tuesday" << endl;
+    cout << "wed - Wednesday" << endl;
+    cout << "thu - Thursday" << endl;
+    cout << "fri - Friday" << endl;
+    cout << "sat - Saturday" << endl;
+    cout << "sun - Sunday" << endl;
+    cout << "quit - Quit" << endl;
+
+    cout << "\n\n" << endl;
 }
 
 
